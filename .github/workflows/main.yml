@@ -1,0 +1,16 @@
+
+name: ZAP Baseline Scan
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run OWASP ZAP
+        uses: zaproxy/action-baseline@v0.14.0
+        with:
+          target: "https://www.example.com"
