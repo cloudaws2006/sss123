@@ -1,0 +1,25 @@
+
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: cleanup
+spec:
+  steps:
+    - name: clean
+      image: alpine
+      script: |
+        #!/bin/sh
+        echo "Cleanup completed"
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: test
+spec:
+  steps:
+    - name: nose-test
+      image: python:3.11
+      script: |
+        #!/bin/sh
+        pip install nose
+        nosetests
